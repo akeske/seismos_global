@@ -369,7 +369,7 @@ function load() {
 		navigationControl: false,
 
 		//	navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
-		mapTypeId: google.maps.MapTypeId.TERRAIN
+		mapTypeId: google.maps.MapTypeId.SATELLITE
 	};
 
 	map = new google.maps.Map(document.getElementById("map"), settings);
@@ -383,39 +383,11 @@ function load() {
 	//		imageBounds);
 	//	oldmap.setMap(map);
 
-	var point2 = new google.maps.LatLng(-40, -60);
-	var point1 = new google.maps.LatLng(70, 1);
-	var color = getColor(true);
-	markerstart = new google.maps.Marker({
-		position: point1,
-		map: map,
-		title: 'start',
-		clickable: false,
-		icon: getIcon(color),
-		//	icon: startYellow,
-		draggable: true
-	});
-	markerfin = new google.maps.Marker({
-		position: point2,
-		map: map,
-		title: 'end',
-		clickable: false,
-		icon: getIcon(color),
-		//	icon: startYellow,
-		draggable: true
-	});
 
-	google.maps.event.addListener(markerstart, 'drag', function () {
-		updateMarkerfrom(markerstart);
-	});
-	google.maps.event.addListener(markerfin, 'drag', function () {
-		updateMarkerto(markerfin);
-	});
 
-	var list = google.maps.event.addListener(map, 'mousemove', function (event) {
-		document.getElementById('coordslat').value = event.latLng.lat().toFixed(6);
-		document.getElementById('coordslng').value = event.latLng.lng().toFixed(6);
-	});
+	
+
+	
 
 	var i;
 	var j;
@@ -433,6 +405,49 @@ function load() {
 		};
 		size = data.documentElement.getElementsByTagName("size");
 		size = parseFloat(size[0].getAttribute("size"));
+
+		var markLat = data.documentElement.getElementsByTagName("lat");
+		var markLng = data.documentElement.getElementsByTagName("lng");
+
+		var mlat1 = parseFloat(markLat[0].getAttribute("lat"));
+		var mlat2 = parseFloat(markLat[1].getAttribute("lat"));
+		var mlng1 = parseFloat(markLng[0].getAttribute("lng"));
+		var mlng2 = parseFloat(markLng[1].getAttribute("lng"));
+
+		point1 = new google.maps.LatLng(mlat2, mlng1);
+		point2 = new google.maps.LatLng(mlat1, mlng2);
+
+		var color = getColor(true);
+		markerstart = new google.maps.Marker({
+			position: point1,
+			map: map,
+			title: 'start',
+			clickable: false,
+			icon: getIcon(color),
+			//	icon: startYellow,
+			draggable: true
+		});
+		markerfin = new google.maps.Marker({
+			position: point2,
+			map: map,
+			title: 'end',
+			clickable: false,
+			icon: getIcon(color),
+			//	icon: startYellow,
+			draggable: true
+		});
+
+		google.maps.event.addListener(markerstart, 'drag', function () {
+			updateMarkerfrom(markerstart);
+		});
+		google.maps.event.addListener(markerfin, 'drag', function () {
+			updateMarkerto(markerfin);
+		});
+
+		var list = google.maps.event.addListener(map, 'mousemove', function (event) {
+			document.getElementById('coordslat').value = event.latLng.lat().toFixed(6);
+			document.getElementById('coordslng').value = event.latLng.lng().toFixed(6);
+		});
 
 		lat = data.documentElement.getElementsByTagName("lat");
 		for(i = 0; i < lat.length; i++) {
