@@ -380,8 +380,8 @@ include("inc/database.php");
 						unset($_SESSION['fibSide3']);
 						unset($_SESSION['fibSide4']);
 					}
-					$fromdate1=$fromday1.$frommonth1.$fromyear1."000000";
-					$todate1=$today1.$tomonth1.$toyear1."245959";
+					$fromdate1=$fromday1."-".$frommonth1."-".$fromyear1;
+					$todate1=$today1."-".$tomonth1."-".$toyear1;
 					include("agent.php");
 					include('createsql.php'); ?>
 

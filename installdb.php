@@ -34,14 +34,14 @@ include("inc/database.php");
 						}
 						// Create database
 						$query1="CREATE DATABASE IF NOT EXISTS globaldb";
-						if (mysql_query($query1)) {
+						if (mysqli_query($con, $query1)) {
 							print ("Database created successfully <br>");
 						} else {
-							print ("Error in creating database: <br><br>". mysql_error ());
+							print ("Error in creating database: <br><br>". mysqli_error ());
 						}
-						mysql_select_db("globaldb", $con)or die("A MySQL error has occurred.<br />Your Query: " . $your_query . "<br /> Error: (" . mysql_errno() . ") " . mysql_error())."\n";
+						mysqli_select_db($con, "globaldb")or die("A MySQL error has occurred.<br />Your Query: " . $your_query . "<br /> Error: (" . mysqli_connect_error() . ") " . mysqli_connect_error())."\n";
 						// Create table
-						mysql_set_charset("utf8_general_ci",$con);
+						mysqli_set_charset($con, "utf8_general_ci");
 						$query2 = "CREATE TABLE IF NOT EXISTS `seismos` (
 						  `id` MEDIUMINT(6) NOT NULL AUTO_INCREMENT ,
 						  `idyear` MEDIUMINT(6) NULL ,
@@ -58,15 +58,15 @@ include("inc/database.php");
 						  `date` datetime NULL ,
 						  PRIMARY KEY (`id`))";
 						// Execute query
-						if (mysql_query($query2,$con)) {
+						if (mysqli_query($con,$query2)) {
 							echo "Table seismos created!";
 							echo "<br>";
 						}else{
-							echo "Error creating table map: " . mysql_error();
+							echo "Error creating table map: " . mysqli_connect_error();
 							echo "<br>";
 						}
 						// Create table
-						mysql_set_charset("utf8_general_ci",$con);
+						mysqli_set_charset($con,"utf8_general_ci");
 						$query3 = "CREATE TABLE IF NOT EXISTS `users` (
 						`id` int(6) NOT NULL AUTO_INCREMENT,
 						`username` CHAR(15) NULL,
@@ -75,15 +75,15 @@ include("inc/database.php");
 						`installcan` TINYINT(3) NOT NULL default '0', 
 						PRIMARY KEY (`id`))";
 						// Execute query
-						if (mysql_query($query3,$con)) {
+						if (mysqli_query($con,$query3)) {
 							echo "Table users created!";
 							echo "<br>";
 						}else{
-							echo "Error creating table users: " . mysql_error();
+							echo "Error creating table users: " . mysqli_connect_error();
 							echo "<br>";
 						}
 						// Create table
-						mysql_set_charset("utf8_general_ci",$con);
+						mysqli_set_charset($con,"utf8_general_ci");
 						$query3 = "CREATE TABLE IF NOT EXISTS `memory` (
 						`id` int(6) NOT NULL AUTO_INCREMENT,
 						  `memory` int(2) NOT NULL,
@@ -94,11 +94,11 @@ include("inc/database.php");
 						  `type` int(6) NOT NULL,
 						  PRIMARY KEY (`id`))";
 						// Execute query
-						if (mysql_query($query3,$con)) {
+						if (mysqli_query($con,$query3)) {
 							echo "Table memory created!";
 							echo "<br>";
 						}else{
-							echo "Error creating table memory: " . mysql_error();
+							echo "Error creating table memory: " . mysqli_connect_error();
 							echo "<br>";
 						}
 						echo "<br>";

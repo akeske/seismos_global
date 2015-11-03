@@ -2,35 +2,34 @@
 $time_start = microtime(true);
 	$counter=0;
 	
-	$lines = file("global.csv");
+	$lines = file("2014-11-02 -> 2015-11-03.csv");
 
 	$i=0;
 	foreach ($lines as $line_num => $line) {
 		if ($line_num==0 || $line_num==1) { continue; }
 		if ($line[0]=="1") { continue; }
-		$pieces = explode(",", $line);
+		$pieces = explode(";", $line);
 
-		$datetime = explode("T", $pieces[0]);
-		$date[$i] = $datetime[0];
+		$date[$i] = $pieces[0];
 		$datepieces = explode("-", $date[$i]);
 		$etos[$i] = $datepieces[0];
 		$month[$i] = $datepieces[1];
 		$mera[$i] = $datepieces[2];
 
-		$time[$i] = $datetime[1];
+		$time[$i] = $pieces[1];
 		$timepieces = explode(":", $time[$i]);
 		$wra[$i] = $timepieces[0];
 		$lepta[$i] = $timepieces[1];
 		$deut[$i] = $timepieces[2];
 
 		
-		$lat[$i] =  $pieces[1];
-		$long[$i] = $pieces[2];
-		$depth[$i] = $pieces[3];
+		$lat[$i] =  $pieces[2];
+		$long[$i] = $pieces[3];
+		$depth[$i] = $pieces[4];
 		if($depth[$i]==""){
 			$depth[$i] = 9999;
 		}
-		$magnitude[$i] = $pieces[4];
+		$magnitude[$i] = $pieces[7];
 		$counter++;
 
 		$i++;

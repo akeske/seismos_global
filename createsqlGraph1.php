@@ -1,23 +1,23 @@
 <?php
 	//for results date 1
 	if( $flng[$i]>$tlng[$i] ){
-	$sqlD1 = "(SELECT date, lat, lng, vathos, megethos, type, typeSize FROM seismos
-		WHERE date>=$fromdate1 AND date<=$todate1 AND 
+	$sqlD1 = "SELECT date, lat, lng, vathos, megethos, type, typeSize FROM seismos
+		WHERE date>='$fromdate1' AND date<='$todate1' AND 
 		lat>=$flat[$j] AND lat<=$tlat[$j] AND 
 		lng>=$flng[$i] AND lng<=180 AND 
 		vathos>=$fromdpth AND vathos<=$todpth AND 
-		megethos>=$frommagn AND megethos<=$tomagn)
+		megethos>=$frommagn AND megethos<=$tomagn
 		UNION ALL
-		(SELECT date, lat, lng, vathos, megethos, type, typeSize FROM seismos
-		WHERE date>=$fromdate1 AND date<=$todate1 AND 
+		SELECT date, lat, lng, vathos, megethos, type, typeSize FROM seismos
+		WHERE date>='$fromdate1' AND date<='$todate1' AND 
 		lat>=$flat[$j] AND lat<=$tlat[$j] AND 
 		lng>=-180 AND lng<=$tlng[$i] AND 
 		vathos>=$fromdpth AND vathos<=$todpth AND 
-		megethos>=$frommagn AND megethos<=$tomagn)
+		megethos>=$frommagn AND megethos<=$tomagn
 		ORDER BY $order $orderby";
 	}else{
 	$sqlD1 = "SELECT date, lat, lng, vathos, megethos, type, typeSize FROM seismos
-		WHERE date>=$fromdate1 AND date<=$todate1 AND 
+		WHERE date>='$fromdate1' AND date<='$todate1' AND 
 		lat>=$flat[$j] AND lat<=$tlat[$j] AND 
 		lng>=$flng[$i] AND lng<=$tlng[$i] AND 
 		vathos>=$fromdpth AND vathos<=$todpth AND 
