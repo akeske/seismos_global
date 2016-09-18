@@ -9,6 +9,17 @@
 		<li><a href="#" id="hidecounters" onclick="removeLabels()">Show counters</a>
 			<input type="hidden" id="hidecounterstext" value="0"></input>
 		</li>
+		<li>
+			<table>
+			<tr>
+				<td width="150"><a href="#" id="predictionsDisplay" onclick="predictionsDisplay()">Show&nbsp;predictions</a></td>
+				<input type="hidden" id="predShowHide" value="1"></input>
+				<td><div id="predInfo">empty</div></td>
+				<td>From:&nbsp;<input type="text" id="fromPred" name="fromPred" value="<?php echo $_SESSION['fromPred']; ?>" size="3"/></td>
+				<td>To:&nbsp;<input type="text" id="toPred" name="toPred" value="<?php echo $_SESSION['toPred']; ?>" size="3"/></td>
+			</tr>
+			</table>
+		</li>
 		<li>---------------------------------------------------------------</li>
 		<li><a href="#" id="hidea1" onclick="hidemarkers1()">Hide markers</a>
 			<input type="hidden" id="hide1" value="0"></input>
