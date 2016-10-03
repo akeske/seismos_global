@@ -423,7 +423,7 @@ function load() {
 			map: map,
 			title: 'start',
 			clickable: false,
-			icon: getIcon(color),
+		//	icon: getIcon(color),
 			//	icon: startYellow,
 			draggable: true
 		});
@@ -432,7 +432,7 @@ function load() {
 			map: map,
 			title: 'end',
 			clickable: false,
-			icon: getIcon(color),
+		//	icon: getIcon(color),
 			//	icon: startYellow,
 			draggable: true
 		});

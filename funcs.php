@@ -1,12 +1,12 @@
-<?php
+﻿<?php
 $time_start = microtime(true);
 	$counter=0;
 	
-	$lines = file("2014-11-02 -> 2015-11-03.csv");
+	$lines = file("new.csv");
 
 	$i=0;
 	foreach ($lines as $line_num => $line) {
-		if ($line_num==0 || $line_num==1) { continue; }
+		if ($line_num==0) { continue; }
 		if ($line[0]=="1") { continue; }
 		$pieces = explode(";", $line);
 
