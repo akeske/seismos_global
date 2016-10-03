@@ -288,6 +288,8 @@ var COLORS = [
 	["purple", "#800080"]
 ];
 
+var markersPredictions = [];
+
 function getColor(named) {
 	return COLORS[(colorIndex_++) % COLORS.length][named ? 0 : 1];
 }
@@ -393,6 +395,39 @@ function load() {
 	var j;
 	var size;
 	var l;
+
+	downloadUrl("csvxml.php", function (data) {
+		var max=-9999;
+		var min=9999;
+		var markersXML = data.documentElement.getElementsByTagName("marker");
+		// for(i = fromPred; i <= toPred; i++) {
+		for(i = 0; i < markersXML.length; i++) {
+			// var id = markersXML[i].getAttribute("id");
+			// var num = markersXML[i].getAttribute("num");
+			var lat = markersXML[i].getAttribute("lat");
+			var lng = markersXML[i].getAttribute("lng");
+			var latlng = new google.maps.LatLng(parseFloat(markersXML[i].getAttribute("lat")),
+					parseFloat(markersXML[i].getAttribute("lng")));
+
+			// if( num>=fromPred && num<=toPred){
+				// var marker = createMarkerPred(id, latlng, num);
+				var marker = createMarkerPred(i, latlng);
+				markersPredictions.push( marker );
+			// }
+			// num = parseInt( num );
+			// if( num>max ){
+			// 	max = num;
+			// }
+			// if( num<min ){
+			// 	min = num;
+			// }
+		}
+		counterPredictions = markersPredictions.length;
+		document.getElementById("predInfo").innerHTML = min+"&nbsp;->&nbsp;"+max+"&nbsp;&nbsp;";
+	//	document.getElementById("fromPred").value = min;
+	//	document.getElementById("toPred").value = max;
+
+	});
 
 	downloadUrl("phpsqlajax_xmlD1.php", function (data) {
 		var line1 = [];
@@ -705,6 +740,36 @@ Label.prototype.draw = function () {
 
 	this.span_.innerHTML = this.get('text').toString();
 };
+
+function createMarkerPred(id, latlng) {
+	var marker = new google.maps.Marker({
+		position: latlng,
+		map: null,
+		clickable: true,
+		icon: customIcons[6]
+	});
+	return marker;
+}
+function predictionsDisplay(){
+	if( document.getElementById("predShowHide").value==0 ){
+		document.getElementById("predShowHide").value = 1;
+		document.getElementById("predictionsDisplay").innerHTML = "Show&nbsp;predictions";
+		counterPredictions = 0;
+		setAllMapPred(null, 0, markersPredictions.length);
+	}else{
+		document.getElementById("predShowHide").value = 0;
+		document.getElementById("predictionsDisplay").innerHTML = "Hide&nbsp;predictions";
+		counterPredictions = markersPredictions.length;
+		var fromPred = parseInt( document.getElementById('fromPred').value );
+		var toPred = parseInt( document.getElementById('toPred').value );
+		setAllMapPred(map, fromPred, toPred);
+	}
+}
+function setAllMapPred(map, fromPred, toPred) {
+	for (var i = fromPred; i <= toPred; i++) {
+		markersPredictions[i].setMap(map);
+	}
+}
 
 function createMarker(id, latlng, megethos, vathos, type, typeSize, date, l, lat, lng, qntMarkers) {
 	var tempTypeSize = parseInt(typeSize);
