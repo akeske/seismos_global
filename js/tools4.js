@@ -89,64 +89,64 @@ function initialize4() {
 	$('#fibSide4').keyup(function (event) {
 		getdistancesSide4();
 	});
-	$(".marker3Tip1").hide();
-	$(".marker3Tip2").hide();
-	$(".marker3Drag").hide();
-	$(".select3").show();
+	$(".marker44Tip1").hide();
+	$(".marker4Tip2").hide();
+	$(".marker4Drag").hide();
+	$(".select4").show();
 }
 
 function selectTool4(id) {
-
+alert(id);
 	$(".marker3Tip1").show();
 	google.maps.event.clearListeners(map, 'click');
 	var coordinates4 = [];
 	switch(id) {
 		case 1:
-			cleartool4(circles4,0);
-			$(".marker3Tip1").show();
-			$(".marker3Tip2").hide();
-			$(".marker3Drag").hide();
-			$(".select3").hide();
+			clearTool4(circles4,0);
+			$(".marker4Tip1").show();
+			$(".marker4Tip2").hide();
+			$(".marker4Drag").hide();
+			$(".select4").hide();
 			document.getElementById('distCircle4').value = "";
 			if(clicks4 == 1)
 				clicks4 = 0;
 			break;
 		case 2:
-			cleartool4(lines4,0);
-			$(".marker3Tip1").show();
-			$(".marker3Tip2").hide();
-			$(".marker3Drag").hide();
-			$(".select3").hide();
+            clearTool4(lines4,0);
+			$(".marker4Tip1").show();
+			$(".marker4Tip2").hide();
+			$(".marker4Drag").hide();
+			$(".select4").hide();
 			document.getElementById('distVer4').value = "";
 			if(clicks4 == 1)
 				clicks4 = 0;
 			break;
 		case 3:
-			cleartool4(lines42,0);
-			$(".marker3Tip1").show();
-			$(".marker3Tip2").hide();
-			$(".marker3Drag").hide();
-			$(".select3").hide();
+            clearTool4(lines42,0);
+			$(".marker4Tip1").show();
+			$(".marker4Tip2").hide();
+			$(".marker4Drag").hide();
+			$(".select4").hide();
 			document.getElementById('distHor4').value = "";
 			if(clicks4 == 1)
 				clicks4 = 0;
 			break;
 		case 5:
-			cleartool4(line4,0);
-			$(".marker3Tip1").show();
-			$(".marker3Tip2").hide();
-			$(".marker3Drag").hide();
-			$(".select3").hide();
+            clearTool4(line4,0);
+			$(".marker4Tip1").show();
+			$(".marker4Tip2").hide();
+			$(".marker4Drag").hide();
+			$(".select4").hide();
 			document.getElementById('distLine4').value = "";
 			if(clicks1 == 1)
 				clicks1 = 0;
 		break;
 		case 7:
-			cleartool4(line41,0);
-			$(".marker3Tip1").show();
-			$(".marker3Tip2").hide();
-			$(".marker3Drag").hide();
-			$(".select3").hide();
+            clearTool4clearTool4(line41,0);
+			$(".marker4Tip1").show();
+			$(".marker4Tip2").hi4de();
+			$(".marker4Drag").hide();
+			$(".select4").hide();
 			document.getElementById('distLine41').value = "";
 			if(clicks1 == 1)
 				clicks1 = 0;
@@ -162,11 +162,11 @@ function selectTool4(id) {
 				clicks4 = 0;
 			break;
 		case 4:
-			cleartool4(circles4,0);
-			cleartool4(lines4,0);
-			cleartool4(lines42,0);
-			cleartool4(line4,0);
-			cleartool4(line41,0);
+			clearTool4(circles4,0);
+			clearTool4(lines4,0);
+			clearTool4(lines42,0);
+			clearTool4(line4,0);
+			clearTool4(line41,0);
 			clearTool4(side4, 0);
 			document.getElementById('distCircle4').value = "";
 			document.getElementById('distVer4').value = "";
@@ -176,10 +176,10 @@ function selectTool4(id) {
 			document.getElementById('distSide4').value = "";
 			if(clicks4 == 1 || clicks4 == 2)
 				clicks4 = 0;
-			$(".marker3Tip1").hide();
-			$(".marker3Tip2").hide();
-			$(".marker3Drag").hide();
-			$(".select3").show();
+			$(".marker4Tip1").hide();
+			$(".marker4Tip2").hide();
+			$(".marker4Drag").hide();
+			$(".select4").show();
 			return;
 	}
 	
@@ -235,10 +235,10 @@ function selectTool4(id) {
 			}
 		}
 		if(clicks4 == 1) {
-			$(".marker3Tip1").hide();
-			$(".marker3Tip2").show();
-			$(".marker3Drag").hide();
-			$(".select3").hide();
+			$(".marker4Tip1").hide();
+			$(".marker4Tip2").show();
+			$(".marker4Drag").hide();
+			$(".select4").hide();
 		}
 	});
 	

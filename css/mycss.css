@@ -39,6 +39,15 @@
 .marker3Drag{
   display:none;
 }
+.marker4Tip1{
+	display:none;
+}
+.marker4Tip2{
+	display:none;
+}
+.marker4Drag{
+	display:none;
+}
 #latlng{
 	height: auto;
 	z-index: 100;
