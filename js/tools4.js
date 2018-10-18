@@ -89,63 +89,64 @@ function initialize4() {
     $('#fibSide4').keyup(function (event) {
         getdistancesSide4();
     });
-    $(".marker4Tip1").hide();
-    $(".marker4Tip2").hide();
-    $(".marker4Drag").hide();
-    $(".select4").show();
+    $(".marker3Tip1").hide();
+    $(".marker3Tip2").hide();
+    $(".marker3Drag").hide();
+    $(".select3").show();
 }
 
 function selectTool4(id) {
-    $(".marker4Tip1").show();
+
+    $(".marker3Tip1").show();
     google.maps.event.clearListeners(map, 'click');
     var coordinates4 = [];
     switch(id) {
         case 1:
             clearTool4(circles4,0);
-            $(".marker4Tip1").show();
-            $(".marker4Tip2").hide();
-            $(".marker4Drag").hide();
-            $(".select4").hide();
+            $(".marker3Tip1").show();
+            $(".marker3Tip2").hide();
+            $(".marker3Drag").hide();
+            $(".select3").hide();
             document.getElementById('distCircle4').value = "";
             if(clicks4 == 1)
                 clicks4 = 0;
             break;
         case 2:
             clearTool4(lines4,0);
-            $(".marker4Tip1").show();
-            $(".marker4Tip2").hide();
-            $(".marker4Drag").hide();
-            $(".select4").hide();
+            $(".marker3Tip1").show();
+            $(".marker3Tip2").hide();
+            $(".marker3Drag").hide();
+            $(".select3").hide();
             document.getElementById('distVer4').value = "";
             if(clicks4 == 1)
                 clicks4 = 0;
             break;
         case 3:
             clearTool4(lines42,0);
-            $(".marker4Tip1").show();
-            $(".marker4Tip2").hide();
-            $(".marker4Drag").hide();
-            $(".select4").hide();
+            $(".marker3Tip1").show();
+            $(".marker3Tip2").hide();
+            $(".marker3Drag").hide();
+            $(".select3").hide();
             document.getElementById('distHor4').value = "";
             if(clicks4 == 1)
                 clicks4 = 0;
             break;
         case 5:
             clearTool4(line4,0);
-            $(".marker4Tip1").show();
-            $(".marker4Tip2").hide();
-            $(".marker4Drag").hide();
-            $(".select4").hide();
+            $(".marker3Tip1").show();
+            $(".marker3Tip2").hide();
+            $(".marker3Drag").hide();
+            $(".select3").hide();
             document.getElementById('distLine4').value = "";
             if(clicks1 == 1)
                 clicks1 = 0;
             break;
         case 7:
-            clearTool4clearTool4(line41,0);
-            $(".marker4Tip1").show();
-            $(".marker4Tip2").hi4de();
-            $(".marker4Drag").hide();
-            $(".select4").hide();
+            clearTool4(line41,0);
+            $(".marker3Tip1").show();
+            $(".marker3Tip2").hide();
+            $(".marker3Drag").hide();
+            $(".select3").hide();
             document.getElementById('distLine41').value = "";
             if(clicks1 == 1)
                 clicks1 = 0;
@@ -175,10 +176,10 @@ function selectTool4(id) {
             document.getElementById('distSide4').value = "";
             if(clicks4 == 1 || clicks4 == 2)
                 clicks4 = 0;
-            $(".marker4Tip1").hide();
-            $(".marker4Tip2").hide();
-            $(".marker4Drag").hide();
-            $(".select4").show();
+            $(".marker3Tip1").hide();
+            $(".marker3Tip2").hide();
+            $(".marker3Drag").hide();
+            $(".select3").show();
             return;
     }
 
@@ -187,10 +188,10 @@ function selectTool4(id) {
         clicks4++;
 
         if(clicks4 == 2) {
-            $(".marker4Tip1").hide();
-            $(".marker4Tip2").hide();
-            $(".marker4Drag").show();
-            $(".select4").hide();
+            $(".marker3Tip1").hide();
+            $(".marker3Tip2").hide();
+            $(".marker3Drag").show();
+            $(".select3").hide();
             switch(id) {
                 case 1: //call circles4
                     document.getElementById('distCircle4').value = distance( coordinates4[0].lat(), coordinates4[0].lng(), coordinates4[1].lat(), coordinates4[1].lng(), 0);
@@ -234,10 +235,10 @@ function selectTool4(id) {
             }
         }
         if(clicks4 == 1) {
-            $(".marker4Tip1").hide();
-            $(".marker4Tip2").show();
-            $(".marker4Drag").hide();
-            $(".select4").hide();
+            $(".marker3Tip1").hide();
+            $(".marker3Tip2").show();
+            $(".marker3Drag").hide();
+            $(".select3").hide();
         }
     });
 
@@ -408,13 +409,13 @@ function fib_circles4(coordinates4) {
 
     google.maps.event.addListener(markerc41, 'dragend', function () {
         coordinates4[0] = markerc41.getPosition();
-        cleartool4(circles4,1);
+        clearTool4(circles4,1);
         fib_circles4(coordinates4);
     });
 
     google.maps.event.addListener(markerc42, 'dragend', function () {
         coordinates4[1] = markerc42.getPosition();
-        cleartool4(circles4,1);
+        clearTool4(circles4,1);
         fib_circles4(coordinates4);
     });
     google.maps.event.addListener(markerc41, 'drag', function () {
@@ -476,12 +477,12 @@ function fib_lines4(coordinates4) {
 
     google.maps.event.addListener(markerv41, 'dragend', function () {
         coordinates4[0] = markerv41.getPosition();
-        cleartool4(lines4,1);
+        clearTool4(lines4,1);
         fib_lines4(coordinates4);
     });
     google.maps.event.addListener(markerv42, 'dragend', function () {
         coordinates4[1] = markerv42.getPosition();
-        cleartool4(lines4,1);
+        clearTool4(lines4,1);
         fib_lines4(coordinates4);
     });
 
@@ -589,12 +590,12 @@ function fib_lines42(coordinates4) {
 
     google.maps.event.addListener(markerh41, 'dragend', function () {
         coordinates4[0] = markerh41.getPosition();
-        cleartool4(lines42,1);
+        clearTool4(lines42,1);
         fib_lines42(coordinates4);
     });
     google.maps.event.addListener(markerh42, 'dragend', function () {
         coordinates4[1] = markerh42.getPosition();
-        cleartool4(lines42,1);
+        clearTool4(lines42,1);
         fib_lines42(coordinates4);
     });
     google.maps.event.addListener(markerh41, 'drag', function () {
@@ -672,12 +673,12 @@ function lin4(coordinates4) {
 
     google.maps.event.addListener(markerl41, 'dragend', function () {
         coordinates4[0] = markerl41.getPosition();
-        cleartool4(line4,1);
+        clearTool4(line4,1);
         lin4(coordinates4);
     });
     google.maps.event.addListener(markerl42, 'dragend', function () {
         coordinates4[1] = markerl42.getPosition();
-        cleartool4(line4,1);
+        clearTool4(line4,1);
         lin4(coordinates4);
     });
 
@@ -740,12 +741,12 @@ function lin41(coordinates4) {
 
     google.maps.event.addListener(markerl411, 'dragend', function () {
         coordinates4[0] = markerl411.getPosition();
-        cleartool4(line41,1);
+        clearTool4(line41,1);
         lin41(coordinates4);
     });
     google.maps.event.addListener(markerl421, 'dragend', function () {
         coordinates4[1] = markerl421.getPosition();
-        cleartool4(line41,1);
+        clearTool4(line41,1);
         lin41(coordinates4);
     });
 
@@ -775,7 +776,7 @@ function drawline41(x1, y1, x2, y2) {
     linePath.setMap(map);
     return linePath;
 }
-/* 
+/*
   Calculates the "num" fibonacci distance
 */
 function custom_distanceCircle4(initial, num) {
@@ -806,7 +807,7 @@ function custom_distanceSide4(initial, num, type) {
         return dist;
     }
 }
-/* 
+/*
   toggle all lines4 from maps
 */
 function clearTool4(tool,val) {
