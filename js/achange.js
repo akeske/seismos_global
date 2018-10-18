@@ -767,7 +767,9 @@ function predictionsDisplay(){
 }
 function setAllMapPred(map, fromPred, toPred) {
 	for (var i = fromPred; i <= toPred; i++) {
-		markersPredictions[i].setMap(map);
+		if(markersPredictions[i]){
+            markersPredictions[i].setMap(map);
+		}
 	}
 }
 
