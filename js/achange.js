@@ -213,6 +213,52 @@ customIcons["8"] = icon2Last;
 customIcons["9"] = icon3Last;
 customIcons["10"] = icon4Last;
 customIcons["11"] = icon5Last;
+
+
+var predictionIcons = [
+	new google.maps.MarkerImage('images/predictions/black.png',
+		null,
+		null,
+		new google.maps.Point(3, 3),
+		new google.maps.Size(6, 6)
+	),
+    new google.maps.MarkerImage('images/predictions/blue.png',
+        null,
+        null,
+        new google.maps.Point(3, 3),
+        new google.maps.Size(6, 6)
+    ),
+    new google.maps.MarkerImage('images/predictions/green.png',
+        null,
+        null,
+        new google.maps.Point(3, 3),
+        new google.maps.Size(6, 6)
+    ),
+    new google.maps.MarkerImage('images/predictions/orange.png',
+        null,
+        null,
+        new google.maps.Point(3, 3),
+        new google.maps.Size(6, 6)
+    ),
+    new google.maps.MarkerImage('images/predictions/pink.png',
+        null,
+        null,
+        new google.maps.Point(3, 3),
+        new google.maps.Size(6, 6)
+    ),
+    new google.maps.MarkerImage('images/predictions/red.png',
+        null,
+        null,
+        new google.maps.Point(3, 3),
+        new google.maps.Size(6, 6)
+    ),
+    new google.maps.MarkerImage('images/predictions/yellow.png',
+        null,
+        null,
+        new google.maps.Point(3, 3),
+        new google.maps.Size(6, 6)
+    )
+];
 /*
 var customIcons = [];
 customIcons["0"] = iconM0;
@@ -374,7 +420,34 @@ function load() {
 		mapTypeId: google.maps.MapTypeId.SATELLITE
 	};
 
-	map = new google.maps.Map(document.getElementById("map"), settings);
+    var settingsOSM = {
+        center: new google.maps.LatLng(57, 21),
+        zoom: 3,
+        mapTypeId: "OSM",
+        draggable: true,
+        mapTypeControl: false,
+        streetViewControl: false
+    };
+
+	map = new google.maps.Map(document.getElementById("map"), settingsOSM);
+
+    map.mapTypes.set("OSM", new google.maps.ImageMapType({
+        getTileUrl: function(coord, zoom) {
+            // "Wrap" x (longitude) at 180th meridian properly
+            // NB: Don't touch coord.x: because coord param is by reference, and changing its x property breaks something in Google's lib
+            var tilesPerGlobe = 1 << zoom;
+            var x = coord.x % tilesPerGlobe;
+            if (x < 0) {
+                x = tilesPerGlobe+x;
+            }
+            // Wrap y (latitude) in a like manner if you want to enable vertical infinite scrolling
+
+            return "https://tile.openstreetmap.org/" + zoom + "/" + x + "/" + coord.y + ".png";
+        },
+        tileSize: new google.maps.Size(256, 256),
+        name: "OpenStreetMap",
+        maxZoom: 18
+    }));
 
 	var imageBounds = new google.maps.LatLngBounds(
 		new google.maps.LatLng(39.5, 35.5),
@@ -396,37 +469,27 @@ function load() {
 	var size;
 	var l;
 
-	downloadUrl("csvxml.php", function (data) {
-		var max=-9999;
-		var min=9999;
-		var markersXML = data.documentElement.getElementsByTagName("marker");
-		// for(i = fromPred; i <= toPred; i++) {
-		for(i = 0; i < markersXML.length; i++) {
-			// var id = markersXML[i].getAttribute("id");
-			// var num = markersXML[i].getAttribute("num");
-			var lat = markersXML[i].getAttribute("lat");
-			var lng = markersXML[i].getAttribute("lng");
-			var latlng = new google.maps.LatLng(parseFloat(markersXML[i].getAttribute("lat")),
-					parseFloat(markersXML[i].getAttribute("lng")));
+    downloadJson("predictions.php", function (data) {
+		const max=-9999;
+        const min=9999;
 
-			// if( num>=fromPred && num<=toPred){
-				// var marker = createMarkerPred(id, latlng, num);
-				var marker = createMarkerPred(i, latlng);
-				markersPredictions.push( marker );
-			// }
-			// num = parseInt( num );
-			// if( num>max ){
-			// 	max = num;
-			// }
-			// if( num<min ){
-			// 	min = num;
-			// }
+        let predictions = JSON.parse(data);
+
+
+		for(let [predictionIndex, prediction] of predictions.entries()) {
+            let markersPrediction = [];
+            for(let [pointIndex, point] of prediction.predictions.entries()) {
+                let lat = point.latitude;
+                let lng = point.longitude;
+                let latlng = new google.maps.LatLng(lat, lng);
+                let marker = createMarkerColor(predictionIndex + "-" + pointIndex, latlng, predictionIndex);
+                markersPrediction.push(marker);
+            }
+            markersPredictions.push( markersPrediction );
+            document.getElementById("predInfo" + predictionIndex).innerHTML = "0&nbsp;->&nbsp;"+markersPrediction.length+"&nbsp;&nbsp;";
 		}
-		counterPredictions = markersPredictions.length;
-		document.getElementById("predInfo").innerHTML = min+"&nbsp;->&nbsp;"+max+"&nbsp;&nbsp;";
-	//	document.getElementById("fromPred").value = min;
-	//	document.getElementById("toPred").value = max;
 
+		counterPredictions = markersPredictions.length;
 	});
 
 	downloadUrl("phpsqlajax_xmlD1.php", function (data) {
@@ -741,6 +804,16 @@ Label.prototype.draw = function () {
 	this.span_.innerHTML = this.get('text').toString();
 };
 
+function createMarkerColor(id, latlng, iconId) {
+    var marker = new google.maps.Marker({
+        position: latlng,
+        map: null,
+        clickable: true,
+        icon: predictionIcons[iconId]
+    });
+    return marker;
+}
+
 function createMarkerPred(id, latlng) {
 	var marker = new google.maps.Marker({
 		position: latlng,
@@ -750,6 +823,7 @@ function createMarkerPred(id, latlng) {
 	});
 	return marker;
 }
+
 function predictionsDisplay(){
 	if( document.getElementById("predShowHide").value==0 ){
 		document.getElementById("predShowHide").value = 1;
@@ -765,10 +839,27 @@ function predictionsDisplay(){
 		setAllMapPred(map, fromPred, toPred);
 	}
 }
-function setAllMapPred(map, fromPred, toPred) {
+
+function predictionsNewDisplay(num){
+    if( markersPredictions[num].visible ){
+        markersPredictions[num].visible = false;
+        document.getElementById("predictionsDisplay" + num).innerHTML = "Show&nbsp;predictions";
+        counterPredictions = 0;
+        setAllMapPred(null, 0, markersPredictions[num].length, num);
+    }else{
+        markersPredictions[num].visible = true;
+        document.getElementById("predictionsDisplay" + num).innerHTML = "Hide&nbsp;predictions";
+        counterPredictions = markersPredictions[num].length;
+        var fromPred = parseInt( document.getElementById('fromPred' + num).value );
+        var toPred = parseInt( document.getElementById('toPred' + num).value );
+        setAllMapPred(map, fromPred, toPred, num);
+    }
+}
+
+function setAllMapPred(map, fromPred, toPred, num = 0) {
 	for (var i = fromPred; i <= toPred; i++) {
-		if(markersPredictions[i]){
-            markersPredictions[i].setMap(map);
+		if(markersPredictions[num][i]){
+            markersPredictions[num][i].setMap(map);
 		}
 	}
 }

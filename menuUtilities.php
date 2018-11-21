@@ -11,14 +11,23 @@
 		<li>
 			<table>
 			<tr>
-				<td width="150"><a href="#" id="predictionsDisplay" onclick="predictionsDisplay()">Show&nbsp;predictions</a></td>
-				<input type="hidden" id="predShowHide" value="1"></input>
-				<td><div id="predInfo">empty</div></td>
-				<td>From:&nbsp;<input type="text" id="fromPred" name="fromPred" value="<?php echo $_SESSION['fromPred']; ?>" size="3"/></td>
-				<td>To:&nbsp;<input type="text" id="toPred" name="toPred" value="<?php echo $_SESSION['toPred']; ?>" size="3"/></td>
+				<td width="150"><a href="#" id="predictionsDisplay0" onclick="predictionsNewDisplay(0)">Show&nbsp;predictions</a></td>
+				<td><div id="predInfo0">empty</div></td>
+				<td>From:&nbsp;<input type="text" id="fromPred0" name="fromPred0" value="<?php echo $_SESSION['fromPred']; ?>" size="3"/></td>
+				<td>To:&nbsp;<input type="text" id="toPred0" name="toPred0" value="<?php echo $_SESSION['toPred']; ?>" size="3"/></td>
 			</tr>
 			</table>
 		</li>
+        <li>
+            <table>
+                <tr>
+                    <td width="150"><a href="#" id="predictionsDisplay1" onclick="predictionsNewDisplay(1)">Show&nbsp;predictions</a></td>
+                    <td><div id="predInfo1">empty</div></td>
+                    <td>From:&nbsp;<input type="text" id="fromPred1" name="fromPred1" value="<?php echo $_SESSION['fromPred']; ?>" size="3"/></td>
+                    <td>To:&nbsp;<input type="text" id="toPred1" name="toPred1" value="<?php echo $_SESSION['toPred']; ?>" size="3"/></td>
+                </tr>
+            </table>
+        </li>
 		<li>---------------------------------------------------------------</li>
 		<li><a href="#" id="hidea1" onclick="hidemarkers1()">Hide markers</a>
 			<input type="hidden" id="hide1" value="0"></input>
@@ -290,7 +299,7 @@
 	?>
 	<li ><a href='#' id="memory1"><span>Mem 1</span></a>
 		<ul style="width: 150px;">
-			<lil style="width: 150px;">
+			<li style="width: 150px;">
 				<a href="#" id="save1" onclick="save(1)" width="200">Save</a>
 			</li>
 			<li style="width: 150px;">
