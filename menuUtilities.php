@@ -8,26 +8,6 @@
 		<li><a href="#" id="hidecounters" onclick="removeLabels()">Show counters</a>
 			<input type="hidden" id="hidecounterstext" value="0"></input>
 		</li>
-		<li>
-			<table>
-			<tr>
-				<td width="150"><a href="#" id="predictionsDisplay0" onclick="predictionsNewDisplay(0)">Show&nbsp;predictions</a></td>
-				<td><div id="predInfo0">empty</div></td>
-				<td>From:&nbsp;<input type="text" id="fromPred0" name="fromPred0" value="<?php echo $_SESSION['fromPred']; ?>" size="3"/></td>
-				<td>To:&nbsp;<input type="text" id="toPred0" name="toPred0" value="<?php echo $_SESSION['toPred']; ?>" size="3"/></td>
-			</tr>
-			</table>
-		</li>
-        <li>
-            <table>
-                <tr>
-                    <td width="150"><a href="#" id="predictionsDisplay1" onclick="predictionsNewDisplay(1)">Show&nbsp;predictions</a></td>
-                    <td><div id="predInfo1">empty</div></td>
-                    <td>From:&nbsp;<input type="text" id="fromPred1" name="fromPred1" value="<?php echo $_SESSION['fromPred']; ?>" size="3"/></td>
-                    <td>To:&nbsp;<input type="text" id="toPred1" name="toPred1" value="<?php echo $_SESSION['toPred']; ?>" size="3"/></td>
-                </tr>
-            </table>
-        </li>
 		<li>---------------------------------------------------------------</li>
 		<li><a href="#" id="hidea1" onclick="hidemarkers1()">Hide markers</a>
 			<input type="hidden" id="hide1" value="0"></input>
@@ -289,8 +269,15 @@
 		<li><a href="#" onclick="selectTool4(4)">Clear all</a></li>
 	</ul>
    </li>
-   
-   
+
+    <li class='has-sub'><a href='#'><span>Pred</span></a>
+        <ul>
+            <li id="prediction-menu">
+            </li>
+            <li><a href="#" onclick="selectTool1(4)">Clear all</a></li>
+        </ul>
+    </li>
+
 	<?php
 	include("inc/database.php");
 	$rows1 = mysqli_num_rows(mysqli_query($con, "SELECT * FROM memory WHERE memory=1"));
@@ -320,7 +307,7 @@
    
    <li class=''><a href='#' id="memory2"><span>Mem 2</span></a>
 		<ul style="width: 150px;">
-			<l style="width: 150px;"i>
+			<li style="width: 150px;"i>
 				<a href="#" id="save2" onclick="save(2)">Save</a>
 			</li>
 			<li style="width: 150px;">

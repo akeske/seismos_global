@@ -486,11 +486,23 @@ function load() {
                 markersPrediction.push(marker);
             }
             markersPredictions.push( markersPrediction );
-            document.getElementById("predInfo" + predictionIndex).innerHTML = "0&nbsp;->&nbsp;"+markersPrediction.length+"&nbsp;&nbsp;";
+            addPredictionMenu(predictionIndex, prediction, markersPrediction.length);
 		}
 
 		counterPredictions = markersPredictions.length;
 	});
+
+    function addPredictionMenu(predictionIndex, prediction, num){
+        document.getElementById('prediction-menu').insertAdjacentHTML("beforeend", "<table>\n" +
+            "                    <tr>\n" +
+            "                        <td width=\"150px\"><a href=\"#\" id=\"predictionsDisplay"+ predictionIndex +"\" onclick=\"predictionsNewDisplay(" + predictionIndex +")\">Show&nbsp;predictions</a></td>\n" +
+            "                        <td width=\"100px\">" + prediction.name + "</td>\n" +
+			"                        <td width=\"100px\">0 - "+ num +"</td>\n" +
+            "                        <td width=\"150px\">From:&nbsp;<input type=\"text\" id=\"fromPred" + predictionIndex +"\" name=\"fromPred"+ predictionIndex +"\"  size=\"3\"/></td>\n" +
+            "                        <td width=\"150px\">To:&nbsp;<input type=\"text\" id=\"toPred"+ predictionIndex +"\" name=\"toPred"+ predictionIndex +"\" size=\"3\"/></td>\n" +
+            "                    </tr>\n" +
+            "                </table>")
+	}
 
 	downloadUrl("phpsqlajax_xmlD1.php", function (data) {
 		var line1 = [];
