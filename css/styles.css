@@ -48,7 +48,7 @@
   display: block;
   font-weight: bold;
   line-height: 30px;
-  padding: 0px 15px;
+  padding: 0px 10px;
   text-align: center;
   text-decoration: none;
 }
@@ -86,7 +86,7 @@
   display: block;
   font-size: 12px;
   font-style: normal;
-  padding: 0px 10px 0px 15px;
+  padding: 0px 10px 0px 10px;
   text-align: left;
 }
 #cssmenu li ul a:hover {
