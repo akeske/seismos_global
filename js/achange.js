@@ -257,8 +257,52 @@ var predictionIcons = [
         null,
         new google.maps.Point(3, 3),
         new google.maps.Size(6, 6)
+    ),
+    new google.maps.MarkerImage('images/predictions/black.png',
+        null,
+        null,
+        new google.maps.Point(3, 3),
+        new google.maps.Size(6, 6)
+    ),
+    new google.maps.MarkerImage('images/predictions/blue.png',
+        null,
+        null,
+        new google.maps.Point(3, 3),
+        new google.maps.Size(6, 6)
+    ),
+    new google.maps.MarkerImage('images/predictions/green.png',
+        null,
+        null,
+        new google.maps.Point(3, 3),
+        new google.maps.Size(6, 6)
+    ),
+    new google.maps.MarkerImage('images/predictions/orange.png',
+        null,
+        null,
+        new google.maps.Point(3, 3),
+        new google.maps.Size(6, 6)
+    ),
+    new google.maps.MarkerImage('images/predictions/pink.png',
+        null,
+        null,
+        new google.maps.Point(3, 3),
+        new google.maps.Size(6, 6)
+    ),
+    new google.maps.MarkerImage('images/predictions/red.png',
+        null,
+        null,
+        new google.maps.Point(3, 3),
+        new google.maps.Size(6, 6)
+    ),
+    new google.maps.MarkerImage('images/predictions/yellow.png',
+        null,
+        null,
+        new google.maps.Point(3, 3),
+        new google.maps.Size(6, 6)
     )
 ];
+
+// ToDo: Change the icon to come from function for rotation
 /*
 var customIcons = [];
 customIcons["0"] = iconM0;
