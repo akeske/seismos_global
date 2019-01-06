@@ -174,27 +174,13 @@ include("inc/database.php");
 	<div id="glass_bg_map">
 
     </div>
-    <div class="pred_tool">
-        <table id="prediction-table">
-            <tr>
-                <th>Visible</th>
-                <th>File Name</th>
-                <th>Size</th>
-                <th>From</th>
-                <th>To</th>
-            </tr>
-            <tr>
-            </tr>
-        </table>
-        <a href="#" onclick="selectTool1(4)">Clear all</a>
-    </div>
 	<table style="position:relative; z-index:2; left:-190px; top: 30px; width:1100px;" cellpadding="0" border="0">
 		<tr>
 			<td>
 				<div id="map" style="position:relative;
 					top:-5px;
-					height:555px;
-					width:1100px;
+					height:677px;
+					width:1515px;
 					margin-right:10px;
 					z-index:4;">
 				</div>
@@ -438,7 +424,21 @@ include("inc/database.php");
 	</tr>
 
 	</table>
-			
+
+    <div class="pred_tool">
+        <table id="prediction-table">
+            <tr>
+                <th>Visible</th>
+                <th>File Name</th>
+                <th>Size</th>
+                <th>From</th>
+                <th>To</th>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+        <div><a href="#" onclick="selectTool1(4)">Clear all</a></div>
+    </div>
 	</div>
 	
 	
