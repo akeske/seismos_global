@@ -171,8 +171,24 @@ include("inc/database.php");
 	<?php include("menu.php"); ?>
 		<br>
 	<?php include("menuUtilities.php"); ?>
-	<div id="glass_bg_map"> </div>
-	<table style="position:relative; z-index:2; left:10px; top: 30px; width:1100px;" cellpadding="0" border="0">
+	<div id="glass_bg_map">
+
+    </div>
+    <div class="pred_tool">
+        <table id="prediction-table">
+            <tr>
+                <th>Visible</th>
+                <th>File Name</th>
+                <th>Size</th>
+                <th>From</th>
+                <th>To</th>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+        <a href="#" onclick="selectTool1(4)">Clear all</a>
+    </div>
+	<table style="position:relative; z-index:2; left:-190px; top: 30px; width:1100px;" cellpadding="0" border="0">
 		<tr>
 			<td>
 				<div id="map" style="position:relative;
@@ -182,10 +198,10 @@ include("inc/database.php");
 					margin-right:10px;
 					z-index:4;">
 				</div>
-        
+
 			</td>
-		</tr>	
-	</table>  
+		</tr>
+	</table>
 
 	<div id="latlng">
 		Latitude:&nbsp;<input type="text" id="coordslat" value="" size="10" maxlength="10"/>&nbsp;&nbsp;&nbsp;

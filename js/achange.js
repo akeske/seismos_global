@@ -530,7 +530,7 @@ function load() {
                 markersPrediction.push(marker);
             }
             markersPredictions.push( markersPrediction );
-            addPredictionMenu(predictionIndex, prediction, markersPrediction.length);
+			addPredictionTable(predictionIndex, prediction, markersPrediction.length);
 		}
 
 		counterPredictions = markersPredictions.length;
@@ -539,13 +539,25 @@ function load() {
     function addPredictionMenu(predictionIndex, prediction, num){
         document.getElementById('prediction-menu').insertAdjacentHTML("beforeend", "<table>\n" +
             "                    <tr>\n" +
-            "                        <td width=\"150px\"><a href=\"#\" id=\"predictionsDisplay"+ predictionIndex +"\" onclick=\"predictionsNewDisplay(" + predictionIndex +")\">Show&nbsp;predictions</a></td>\n" +
+            "                        <td width=\"150px\"><a href=\"#\" id=\"predictionsDisplay"+ predictionIndex +"\" onclick=\"predictionsNewDisplay(" + predictionIndex +")\">Show</a></td>\n" +
             "                        <td width=\"100px\">" + prediction.name + "</td>\n" +
 			"                        <td width=\"100px\">0 - "+ num +"</td>\n" +
             "                        <td width=\"150px\">From:&nbsp;<input type=\"text\" id=\"fromPred" + predictionIndex +"\" name=\"fromPred"+ predictionIndex +"\"  size=\"3\"/></td>\n" +
             "                        <td width=\"150px\">To:&nbsp;<input type=\"text\" id=\"toPred"+ predictionIndex +"\" name=\"toPred"+ predictionIndex +"\" size=\"3\"/></td>\n" +
             "                    </tr>\n" +
             "                </table>")
+	}
+
+	function addPredictionTable(predictionIndex, prediction, num){
+		let table = document.getElementById('prediction-table');
+
+		let row = table.insertRow(table.rows.length - 1);
+
+		row.insertCell(0).innerHTML = "<a href=\"#\" id=\"predictionsDisplay"+ predictionIndex +"\" onclick=\"predictionsNewDisplay(" + predictionIndex +")\">Show</a>";
+		row.insertCell(1).innerHTML = prediction.name;
+		row.insertCell(2).innerHTML = num;
+		row.insertCell(3).innerHTML = "<input type=\"text\" id=\"fromPred" + predictionIndex +"\" name=\"fromPred"+ predictionIndex +"\"  size=\"3\" value=\"0\" />";
+		row.insertCell(4).innerHTML = "<input type=\"text\" id=\"toPred"+ predictionIndex +"\" name=\"toPred"+ predictionIndex +"\" size=\"3\" value=\"" + num + "\" />";
 	}
 
 	downloadUrl("phpsqlajax_xmlD1.php", function (data) {
@@ -899,12 +911,12 @@ function predictionsDisplay(){
 function predictionsNewDisplay(num){
     if( markersPredictions[num].visible ){
         markersPredictions[num].visible = false;
-        document.getElementById("predictionsDisplay" + num).innerHTML = "Show&nbsp;predictions";
+        document.getElementById("predictionsDisplay" + num).innerHTML = "Show";
         counterPredictions = 0;
         setAllMapPred(null, 0, markersPredictions[num].length, num);
     }else{
         markersPredictions[num].visible = true;
-        document.getElementById("predictionsDisplay" + num).innerHTML = "Hide&nbsp;predictions";
+        document.getElementById("predictionsDisplay" + num).innerHTML = "Hide";
         counterPredictions = markersPredictions[num].length;
         var fromPred = parseInt( document.getElementById('fromPred' + num).value );
         var toPred = parseInt( document.getElementById('toPred' + num).value );

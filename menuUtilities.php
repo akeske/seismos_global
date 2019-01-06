@@ -270,13 +270,7 @@
 	</ul>
    </li>
 
-    <li class='has-sub'><a href='#'><span>Pred</span></a>
-        <ul>
-            <li id="prediction-menu">
-            </li>
-            <li><a href="#" onclick="selectTool1(4)">Clear all</a></li>
-        </ul>
-    </li>
+
 
 	<?php
 	include("inc/database.php");
