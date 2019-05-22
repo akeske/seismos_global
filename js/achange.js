@@ -215,7 +215,7 @@ customIcons["10"] = icon4Last;
 customIcons["11"] = icon5Last;
 
 
-var predictionIcons = [
+let predictionIcons = [
 	new google.maps.MarkerImage('images/predictions/black.png',
 		null,
 		null,
@@ -553,7 +553,7 @@ function load() {
 
 		let row = table.insertRow(table.rows.length - 1);
 
-		row.insertCell(0).innerHTML = "<a href=\"#\" id=\"predictionsDisplay"+ predictionIndex +"\" onclick=\"predictionsNewDisplay(" + predictionIndex +")\">Show</a>";
+		row.insertCell(0).innerHTML = "<a href=\"#!\" id=\"predictionsDisplay"+ predictionIndex +"\" onclick=\"predictionsNewDisplay(" + predictionIndex +")\">Show</a>";
 		row.insertCell(1).innerHTML = prediction.name;
 		row.insertCell(2).innerHTML = num;
 		row.insertCell(3).innerHTML = "<input type=\"text\" id=\"fromPred" + predictionIndex +"\" name=\"fromPred"+ predictionIndex +"\"  size=\"3\" value=\"0\" />";
@@ -873,7 +873,7 @@ Label.prototype.draw = function () {
 };
 
 function createMarkerColor(id, latlng, iconId) {
-    var marker = new google.maps.Marker({
+    let marker = new google.maps.Marker({
         position: latlng,
         map: null,
         clickable: true,
