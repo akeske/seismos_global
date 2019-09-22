@@ -52,7 +52,7 @@ include("inc/database.php");
 						  `lat` FLOAT( 7, 4 ) NULL ,
 						  `lng` FLOAT( 7, 4 ) NULL ,
 						  `megethos` FLOAT( 3, 1 ) NULL ,
-						  `vathos` TINYINT(3) UNSIGNED NULL ,
+						  `vathos` INT UNSIGNED NULL ,
 						  `type` TINYINT(3) UNSIGNED NULL ,
 						  `typeSize` TINYINT(3) UNSIGNED NULL ,
 						  `date` datetime NULL ,

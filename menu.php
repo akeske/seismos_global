@@ -3,7 +3,10 @@
 <ul>
 	<li class='has-sub'><a href='index.php'><span>Map</span></a></li>
 
-		
+    <?php if(!$logged_in){ ?>
+        <li class='has-sub'><a href='download-data.php'><span>Download&nbsp;earthquakes</span></a></li>
+    <?php } ?>
+
 		<?php if(!$logged_in){ ?>
 			<li class='has-sub'><a href='insertdata.php'><span>Insert&nbsp;earthquakes</span></a></li>
 			<?php } ?>
