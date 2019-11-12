@@ -16,6 +16,7 @@ include("inc/database.php");
 	<meta name="robots" content="index,follow">
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
+	<link href="css/astro-icons.css" rel="stylesheet" type="text/css">
 	<link href="css/mycss.css" rel="stylesheet" type="text/css">
 	<link href="css/styles.css" rel="stylesheet" type="text/css">
 
@@ -425,23 +426,50 @@ include("inc/database.php");
 
 	</table>
 
-    <div class="pred_tool">
-        <table id="prediction-table">
-            <tr>
-                <th>Visible</th>
-                <th>File Name</th>
-                <th>Size</th>
-                <th>From</th>
-                <th>To</th>
-            </tr>
-            <tr>
-            </tr>
-        </table>
-        <div><a href="#" onclick="selectTool1(4)">Clear all</a></div>
-    </div>
+		<div class="pred_tool">
+			<table id="prediction-table">
+				<tr>
+					<th>Visible</th>
+					<th>File Name</th>
+					<th>Size</th>
+					<th>From</th>
+					<th>To</th>
+				</tr>
+				<tr>
+				</tr>
+			</table>
+			<div><a href="#" onclick="selectTool1(4)">Clear all</a></div>
+		</div>
+
 	</div>
-	
-	
+<div id="planet-prediction-window">
+	<div>
+		<table id="planet-prediction-table">
+			<tr>
+				<th>File Name</th>
+				<th><i class="ai moon"></i></th>
+				<th><i class="ai sun"></i></th>
+				<th><i class="ai mercury"></i></th>
+				<th><i class="ai venus"></i></th>
+				<th><i class="ai mars"></i></th>
+				<th><i class="ai jupiter"></i></th>
+				<th><i class="ai saturn"></i></th>
+				<th><i class="ai uranus"></i></th>
+				<th><i class="ai neptune"></i></th>
+				<th><i class="ai pluto"></i></th>
+				<th><i class="ai chiron"></i></th>
+				<th><i class="ai vesta"></i></th>
+				<th><i class="ai pallas"></i></th>
+				<th><i class="ai ceres"></i></th>
+				<th><i class="ai lilith"></i></th>
+			</tr>
+			<tr>
+			</tr>
+		</table>
+		<div><a href="#" onclick="selectTool1(4)">Clear all</a></div>
+	</div>
+</div>
+
 
 </div>
 </div>
