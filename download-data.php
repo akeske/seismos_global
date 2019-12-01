@@ -28,7 +28,12 @@ include("inc/database.php");
 			if($logged_in){
 				echo "Δεν είστε συνδεδεμένος";
 			} else {
+				$sqlDb = "SELECT MAX(`date`) last_date FROM `seismos`;";
+				$result = mysqli_query($con, $sqlDb);
+				$value = mysqli_fetch_object($result);
 			//	if($_SESSION['installcan'] ==0){ ?>
+
+
                 <br><br>
                 <table class="font-size-small table table-condensed table-striped table-bordered table-hover" id="dataParams">
                     <thead>
@@ -41,7 +46,7 @@ include("inc/database.php");
                         <td colspan="9">time constraints</td>
                     </tr>
                     <tr>
-                        <td></td><td>starttime</td><td>start</td><td><input type="text" placeholder="YYYY-MM-DDTHH:MM:SS.ssssss" id="start"/></td><td>[Any]</td><td>[Any valid time]</td><td>[Any valid time]</td><td>Time</td><td>UTC</td>
+                        <td></td><td>starttime</td><td>start</td><td><input type="text" placeholder="YYYY-MM-DDTHH:MM:SS.ssssss" id="start" /></td><td>[Any]</td><td>[Any valid time]</td><td>[Any valid time]</td><td>Time</td><td>UTC</td>
                     </tr>
                     <tr>
                         <td></td><td>endtime</td><td>end</td><td><input type="text" id="end"/></td><td>[Any]</td><td>[Any valid time]</td><td>[Any valid time]</td><td>Time</td><td>UTC</td>
@@ -92,7 +97,7 @@ include("inc/database.php");
 	<div id="foot">
 	</div>
 	<script>
-        document.getElementById('start').value = getCurrentDate();
+        document.getElementById('start').value = '<?=($value != null ? new DateTime($value->last_date) : date('Y-m-d'))->format('Y-m-d');; ?>';
     </script>
 </body>
 </html>
