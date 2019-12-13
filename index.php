@@ -201,11 +201,53 @@ include("inc/database.php");
 		Long:&nbsp;<input type="text" id="coordslnglast" value="" size="7" maxlength="7"/>
 	</div>
 
+	<div id="planet-prediction-window">
+		<div>
+			<table id="planet-prediction-table">
+				<tr>
+					<th>File Name</th>
+					<th><i class="ai moon"></i></th>
+					<th><i class="ai sun"></i></th>
+					<th><i class="ai mercury"></i></th>
+					<th><i class="ai venus"></i></th>
+					<th><i class="ai mars"></i></th>
+					<th><i class="ai jupiter"></i></th>
+					<th><i class="ai saturn"></i></th>
+					<th><i class="ai uranus"></i></th>
+					<th><i class="ai neptune"></i></th>
+					<th><i class="ai pluto"></i></th>
+					<th><i class="ai chiron"></i></th>
+					<th><i class="ai vesta"></i></th>
+					<th><i class="ai pallas"></i></th>
+					<th><i class="ai ceres"></i></th>
+					<th><i class="ai lilith"></i></th>
+				</tr>
+				<tr>
+				</tr>
+			</table>
+			<div><a href="#" onclick="selectTool1(4)">Clear all</a></div>
+		</div>
+		<div class="pred_tool">
+			<table id="prediction-table">
+				<tr>
+					<th>Visible</th>
+					<th>File Name</th>
+					<th>Size</th>
+					<th>From</th>
+					<th>To</th>
+				</tr>
+				<tr>
+				</tr>
+			</table>
+			<div><a href="#" onclick="selectTool1(4)">Clear all</a></div>
+		</div>
+	</div>
+
 	<div id="glass_bg_options">
 	<table border="0" align="center" cellspacing="20">
 	<tr>
 	<td valign="top" height="250">
-			
+
 			<table align="center" bgcolor="#8e8e8e" width="530">
 				<tr align="center">
 					<th>
@@ -219,7 +261,7 @@ include("inc/database.php");
 					</td>
 				</tr>
 			</table>
-			
+
 			<table align="center" bgcolor="#8e8e8e" width="530">
 				<tr align="center">
 					<td>
@@ -233,21 +275,21 @@ include("inc/database.php");
 					</td>
 				</tr>
 			</table>
-			
+
 			<table align="center" bgcolor="#8e8e8e" width="530">
 				<tr align="center">
 					<td>
 						<input value="<?php echo $_SESSION['fromlng']; ?>" type="text" name="fromlng" id="fromlng" maxlength="6" size="16" onkeyup="longitude()"/>
 					</td>
 					<th width="110">
-						&nbsp;-&nbsp;Longitude(x)&nbsp;-&nbsp; 
+						&nbsp;-&nbsp;Longitude(x)&nbsp;-&nbsp;
 					</th>
 					<td>
 						<input value="<?php echo $_SESSION['tolng']; ?>" type="text" name="tolng" id="tolng" maxlength="6" size="16" onkeyup="longitude()"/>
 					</td>
 				</tr>
 			</table>
-			
+
 			<table align="center" bgcolor="#8e8e8e" width="530">
 				<tr align="center">
 					<td>
@@ -261,7 +303,7 @@ include("inc/database.php");
 					</td>
 				</tr>
 			</table>
-			
+
 			<table align="center" bgcolor="#8e8e8e" width="530">
 				<tr align="center">
 					<td>
@@ -316,18 +358,18 @@ include("inc/database.php");
 					<td>
 						<div class="buttons">
 							<button type="submit" class="positive" onclick="check()">
-								<img src="images/tick.png" alt=""/> 
+								<img src="images/tick.png" alt=""/>
 								Search
 							</button>
 						</div>
 					</td>
-				
+
 		</form>
-					<form action="" method="post" align="center">	
+					<form action="" method="post" align="center">
 						<td>
 							<div class="buttons">
 								<button type="submit" class="s" name="subclear">
-							<!		<img src="images/tick.png" alt=""/> 
+							<!		<img src="images/tick.png" alt=""/>
 									Clear
 								</button>
 							</div>
@@ -335,8 +377,8 @@ include("inc/database.php");
 					</form>
 				</tr>
 			</table>
-	
-	
+
+
 	</td>
 
 	<td rowspan="2">
@@ -358,7 +400,7 @@ include("inc/database.php");
 						unset($_SESSION['fromlng']);
 						unset($_SESSION['todpth']);
 						unset($_SESSION['fromdpth']);
-						
+
 						unset($_SESSION['fibVer1']);
 						unset($_SESSION['fibHor1']);
 						unset($_SESSION['fibCircle1']);
@@ -371,7 +413,7 @@ include("inc/database.php");
 						unset($_SESSION['fibVer4'] );
 						unset($_SESSION['fibHor4']);
 						unset($_SESSION['fibCircle4'] );
-						
+
 						unset( $_SESSION['checkVer1'] );
 						unset( $_SESSION['checkVer2'] );
 						unset( $_SESSION['checkVer3'] );
@@ -388,10 +430,10 @@ include("inc/database.php");
 					include("agent.php");
 					include('createsql.php'); ?>
 
-	
+
 	</td>
 	</tr>
-	
+
 	<tr>
 	<td valign="top">
 		<table align="center"  bgcolor="#8e8e8e" width="530" style="border: 2px solid #97AEC4;">
@@ -426,49 +468,7 @@ include("inc/database.php");
 
 	</table>
 
-		<div class="pred_tool">
-			<table id="prediction-table">
-				<tr>
-					<th>Visible</th>
-					<th>File Name</th>
-					<th>Size</th>
-					<th>From</th>
-					<th>To</th>
-				</tr>
-				<tr>
-				</tr>
-			</table>
-			<div><a href="#" onclick="selectTool1(4)">Clear all</a></div>
-		</div>
-
 	</div>
-<div id="planet-prediction-window">
-	<div>
-		<table id="planet-prediction-table">
-			<tr>
-				<th>File Name</th>
-				<th><i class="ai moon"></i></th>
-				<th><i class="ai sun"></i></th>
-				<th><i class="ai mercury"></i></th>
-				<th><i class="ai venus"></i></th>
-				<th><i class="ai mars"></i></th>
-				<th><i class="ai jupiter"></i></th>
-				<th><i class="ai saturn"></i></th>
-				<th><i class="ai uranus"></i></th>
-				<th><i class="ai neptune"></i></th>
-				<th><i class="ai pluto"></i></th>
-				<th><i class="ai chiron"></i></th>
-				<th><i class="ai vesta"></i></th>
-				<th><i class="ai pallas"></i></th>
-				<th><i class="ai ceres"></i></th>
-				<th><i class="ai lilith"></i></th>
-			</tr>
-			<tr>
-			</tr>
-		</table>
-		<div><a href="#" onclick="selectTool1(4)">Clear all</a></div>
-	</div>
-</div>
 
 
 </div>

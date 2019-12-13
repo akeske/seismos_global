@@ -598,21 +598,21 @@ function load() {
 		let row = table.insertRow(table.rows.length - 1);
 
 		row.insertCell(0).innerHTML = name;
-		row.insertCell(1).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Mo\" onclick=\"planetPredictionDisplay('" + name +"','Mo')\">" + (typeof markersPlanetPredictions[name]['Mo'] === 'undefined' ? 'None':'Show') + "</a>";
-		row.insertCell(2).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Su\" onclick=\"planetPredictionDisplay('" + name +"','Su')\">" + (typeof markersPlanetPredictions[name]['Su'] === 'undefined' ? 'None':'Show') + "</a>";
-		row.insertCell(3).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Me\" onclick=\"planetPredictionDisplay('" + name +"','Me')\">" + (typeof markersPlanetPredictions[name]['Me'] === 'undefined' ? 'None':'Show') + "</a>";
-		row.insertCell(4).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Ve\" onclick=\"planetPredictionDisplay('" + name +"','Ve')\">" + (typeof markersPlanetPredictions[name]['Ve'] === 'undefined' ? 'None':'Show') + "</a>";
-		row.insertCell(5).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Ma\" onclick=\"planetPredictionDisplay('" + name +"','Ma')\">" + (typeof markersPlanetPredictions[name]['Ma'] === 'undefined' ? 'None':'Show') + "</a>";
-		row.insertCell(6).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Ju\" onclick=\"planetPredictionDisplay('" + name +"','Ju')\">" + (typeof markersPlanetPredictions[name]['Ju'] === 'undefined' ? 'None':'Show') + "</a>";
-		row.insertCell(7).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Sa\" onclick=\"planetPredictionDisplay('" + name +"','Sa')\">" + (typeof markersPlanetPredictions[name]['Sa'] === 'undefined' ? 'None':'Show') + "</a>";
-		row.insertCell(8).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Ur\" onclick=\"planetPredictionDisplay('" + name +"','Ur')\">" + (typeof markersPlanetPredictions[name]['Ur'] === 'undefined' ? 'None':'Show') + "</a>";
-		row.insertCell(9).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Ne\" onclick=\"planetPredictionDisplay('" + name +"','Ne')\">" + (typeof markersPlanetPredictions[name]['Ne'] === 'undefined' ? 'None':'Show') + "</a>";
-		row.insertCell(10).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Pl\" onclick=\"planetPredictionDisplay('" + name +"','Pl')\">" + (typeof markersPlanetPredictions[name]['Pl'] === 'undefined' ? 'None':'Show') + "</a>";
-		row.insertCell(11).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Ch\" onclick=\"planetPredictionDisplay('" + name +"','Ch')\">" + (typeof markersPlanetPredictions[name]['Ch'] === 'undefined' ? 'None':'Show') + "</a>";
-		row.insertCell(12).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Ve\" onclick=\"planetPredictionDisplay('" + name +"','Ve')\">" + (typeof markersPlanetPredictions[name]['Ve'] === 'undefined' ? 'None':'Show') + "</a>";
-		row.insertCell(13).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Pa\" onclick=\"planetPredictionDisplay('" + name +"','Pa')\">" + (typeof markersPlanetPredictions[name]['Pa'] === 'undefined' ? 'None':'Show') + "</a>";
-		row.insertCell(14).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Ce\" onclick=\"planetPredictionDisplay('" + name +"','Ce')\">" + (typeof markersPlanetPredictions[name]['Ce'] === 'undefined' ? 'None':'Show') + "</a>";
-		row.insertCell(15).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Li\" onclick=\"planetPredictionDisplay('" + name +"','Li')\">" + (typeof markersPlanetPredictions[name]['Li'] === 'undefined' ? 'None':'Show') + "</a>";
+		row.insertCell(1).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Mo\" onclick=\"planetPredictionDisplay('" + name +"','Mo')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Mo'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(2).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Su\" onclick=\"planetPredictionDisplay('" + name +"','Su')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Su'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(3).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Me\" onclick=\"planetPredictionDisplay('" + name +"','Me')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Me'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(4).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Ve\" onclick=\"planetPredictionDisplay('" + name +"','Ve')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Ve'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(5).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Ma\" onclick=\"planetPredictionDisplay('" + name +"','Ma')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Ma'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(6).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Ju\" onclick=\"planetPredictionDisplay('" + name +"','Ju')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Ju'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(7).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Sa\" onclick=\"planetPredictionDisplay('" + name +"','Sa')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Sa'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(8).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Ur\" onclick=\"planetPredictionDisplay('" + name +"','Ur')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Ur'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(9).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Ne\" onclick=\"planetPredictionDisplay('" + name +"','Ne')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Ne'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(10).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Pl\" onclick=\"planetPredictionDisplay('" + name +"','Pl')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Pl'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(11).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Ch\" onclick=\"planetPredictionDisplay('" + name +"','Ch')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Ch'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(12).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Ve\" onclick=\"planetPredictionDisplay('" + name +"','Ve')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Vs'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(13).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Pa\" onclick=\"planetPredictionDisplay('" + name +"','Pa')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Pa'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(14).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Ce\" onclick=\"planetPredictionDisplay('" + name +"','Ce')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Ce'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(15).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Li\" onclick=\"planetPredictionDisplay('" + name +"','Li')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Li'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
 	}
 
 	downloadUrl("phpsqlajax_xmlD1.php", function (data) {
@@ -982,11 +982,11 @@ function predictionsNewDisplay(num){
 function planetPredictionDisplay(filename, planet){
 	if( markersPlanetPredictions[filename][planet].visible ){
 		markersPlanetPredictions[filename][planet].visible = false;
-		document.getElementById("planetPredictionsDisplay" + filename + planet ).innerHTML = "Show";
+		document.getElementById("planetPredictionsDisplay" + filename + planet ).innerHTML = "<img src='images/show.png'>";
 		setAllMapPlanetPred(null, filename, planet);
 	}else{
 		markersPlanetPredictions[filename][planet].visible = true;
-		document.getElementById("planetPredictionsDisplay" + filename + planet).innerHTML = "Hide";
+		document.getElementById("planetPredictionsDisplay" + filename + planet).innerHTML = "<img src='images/hide.png'>";
 		setAllMapPlanetPred(map, filename, planet);
 	}
 }
