@@ -474,7 +474,7 @@ include("inc/database.php");
 </div>
 </div>
 <div id="foot">
-	Copyright &copy; 2013 - Thanos Keskempes, Anthony C Boucouvalas, Nikos Tselikas
+	Copyright &copy; 2013 - Thanos Keskempes, Anthony C Boucouvalas, Nikos Tselikas, Michail G. Gkasios
 </div>
 </body>
 

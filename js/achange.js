@@ -609,10 +609,10 @@ function load() {
 		row.insertCell(9).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name 	+"Ne\" onclick=\"planetPredictionDisplay('" + name +"','Ne')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Ne'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
 		row.insertCell(10).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Pl\" onclick=\"planetPredictionDisplay('" + name +"','Pl')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Pl'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
 		row.insertCell(11).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Ch\" onclick=\"planetPredictionDisplay('" + name +"','Ch')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Ch'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
-		row.insertCell(12).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Ve\" onclick=\"planetPredictionDisplay('" + name +"','Ve')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Vs'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(12).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"We\" onclick=\"planetPredictionDisplay('" + name +"','We')\"><img src='images/" + (typeof markersPlanetPredictions[name]['We'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
 		row.insertCell(13).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Pa\" onclick=\"planetPredictionDisplay('" + name +"','Pa')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Pa'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
 		row.insertCell(14).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Ce\" onclick=\"planetPredictionDisplay('" + name +"','Ce')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Ce'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
-		row.insertCell(15).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Li\" onclick=\"planetPredictionDisplay('" + name +"','Li')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Li'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
+		row.insertCell(15).innerHTML = "<a href=\"#!\" id=\"planetPredictionsDisplay"+ name +"Agh\" onclick=\"planetPredictionDisplay('" + name +"','Agh')\"><img src='images/" + (typeof markersPlanetPredictions[name]['Agh'] === 'undefined' ? 'disabled':'show') + ".png'/></a>";
 	}
 
 	downloadUrl("phpsqlajax_xmlD1.php", function (data) {
