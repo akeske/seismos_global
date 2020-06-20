@@ -80,7 +80,7 @@ function getMonth($date){
 session_start();
 include("inc/database.php");
 $url = "http://www.seismicportal.eu/fdsnws/event/1/query";
-$default_params = "&limit=50000&format=json";
+$default_params = "&limit=1000&format=json";
 
 
 
