@@ -100,44 +100,48 @@ try {
     //$stmt = $pdo->prepare('INSERT INTO `seismos` (`idyear`, `year`, `month`, `name`, `info`, `lat`, `lng`, `megethos`, `vathos`, `type`, `typeSize`, `date`)
     //                                VALUES (:idyear, :year, :month,:name, :info,:lat, :lng,:megethos, :vathos,:type, :typeSize, :date)');
     foreach ($results->features as $feature) {
-        $index++;
-        $properties = $feature->properties;
+		$properties = $feature->properties;
 
-        $name = "Global[" . getYear($properties->time) . "][" . $index . "]";
-        $prepared_data = array(
-            ':idyear' => $index,
-            ':year' => getYear($properties->time),
-            ':month' => getMonth($properties->time),
-            ':name' => "'" . $name . "'",
-            ':info' => "''",
-            ':lat' => $properties->lat,
-            ':lng' => $properties->lon,
-            ':megethos' => $properties->mag,
-            ':vathos' => $properties->depth,
-            ':type' => getQuakeType($properties->mag, $properties->depth),
-            ':typeSize' => getQuakeTypeSize($properties->mag),
-            ':date' => "'" . explode(".", $properties->time)[0] . "'");
+    	if($properties->depth > 0){
+			$index++;
 
-    //    $stmt->execute($prepared_data);
+			$name = "Global[" . getYear($properties->time) . "][" . $index . "]";
+			$prepared_data = array(
+				':idyear' => $index,
+				':year' => getYear($properties->time),
+				':month' => getMonth($properties->time),
+				':name' => "'" . $name . "'",
+				':info' => "''",
+				':lat' => $properties->lat,
+				':lng' => $properties->lon,
+				':megethos' => $properties->mag,
+				':vathos' => $properties->depth,
+				':type' => getQuakeType($properties->mag, $properties->depth),
+				':typeSize' => getQuakeTypeSize($properties->mag),
+				':date' => "'" . explode(".", $properties->time)[0] . "'");
 
-        $sqlDb = "INSERT INTO `seismos` (`idyear`, `year`, `month`, `name`, `info`, `lat`, `lng`, `megethos`, `vathos`, `type`, `typeSize`, `date`) VALUES("
-            . $prepared_data[':idyear'] . ","
-            . $prepared_data[':year'] . ","
-            . $prepared_data[':month'] . ","
-            . $prepared_data[':name'] . ","
-            . $prepared_data[':info'] . ","
-            . $prepared_data[':lat'] . ","
-            . $prepared_data[':lng'] . ","
-            . $prepared_data[':megethos'] . ","
-            . $prepared_data[':vathos'] . ","
-            . $prepared_data[':type'] . ","
-            . $prepared_data[':typeSize'] . ","
-            . $prepared_data[':date'] . ")";
+			//    $stmt->execute($prepared_data);
 
-        if (mysqli_query($con, $sqlDb)) {
-        } else {
-            $error = $error . "Error : " . mysqli_error($con) . $prepared_data[':vathos'];
-        }
+			$sqlDb = "INSERT INTO `seismos` (`idyear`, `year`, `month`, `name`, `info`, `lat`, `lng`, `megethos`, `vathos`, `type`, `typeSize`, `date`) VALUES("
+				. $prepared_data[':idyear'] . ","
+				. $prepared_data[':year'] . ","
+				. $prepared_data[':month'] . ","
+				. $prepared_data[':name'] . ","
+				. $prepared_data[':info'] . ","
+				. $prepared_data[':lat'] . ","
+				. $prepared_data[':lng'] . ","
+				. $prepared_data[':megethos'] . ","
+				. $prepared_data[':vathos'] . ","
+				. $prepared_data[':type'] . ","
+				. $prepared_data[':typeSize'] . ","
+				. $prepared_data[':date'] . ")";
+
+			if (mysqli_query($con, $sqlDb)) {
+			} else {
+				$error = $error . "Error : " . mysqli_error($con) . $prepared_data[':vathos'];
+			}
+		}
+
     }
 } catch (Exception $e) {
     $error = $error . $e;
