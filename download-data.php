@@ -97,7 +97,7 @@ include("inc/database.php");
 	<div id="foot">
 	</div>
 	<script>
-        //document.getElementById('start').value = '<?//=($value != null ? new DateTime($value->last_date) : date('Y-m-d'))->format('Y-m-d');; ?>//';
+        document.getElementById('start').value = '<?=($value != null ? new DateTime($value->last_date) : date('Y-m-d'))->format('Y-m-d');; ?>';
     </script>
 </body>
 </html>
