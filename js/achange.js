@@ -215,91 +215,34 @@ customIcons["10"] = icon4Last;
 customIcons["11"] = icon5Last;
 
 
+function createIcons(imgPath, size = 6){
+	return new google.maps.MarkerImage(
+		imgPath,
+		null,
+		null,
+		new google.maps.Point(size/2, size/2),
+		new google.maps.Size(size, size)
+	);
+}
+
 let predictionIcons = [
-	new google.maps.MarkerImage('images/predictions/black.png',
-		null,
-		null,
-		new google.maps.Point(3, 3),
-		new google.maps.Size(6, 6)
-	),
-    new google.maps.MarkerImage('images/predictions/blue.png',
-        null,
-        null,
-        new google.maps.Point(3, 3),
-        new google.maps.Size(6, 6)
-    ),
-    new google.maps.MarkerImage('images/predictions/green.png',
-        null,
-        null,
-        new google.maps.Point(3, 3),
-        new google.maps.Size(6, 6)
-    ),
-    new google.maps.MarkerImage('images/predictions/orange.png',
-        null,
-        null,
-        new google.maps.Point(3, 3),
-        new google.maps.Size(6, 6)
-    ),
-    new google.maps.MarkerImage('images/predictions/pink.png',
-        null,
-        null,
-        new google.maps.Point(3, 3),
-        new google.maps.Size(6, 6)
-    ),
-    new google.maps.MarkerImage('images/predictions/red.png',
-        null,
-        null,
-        new google.maps.Point(3, 3),
-        new google.maps.Size(6, 6)
-    ),
-    new google.maps.MarkerImage('images/predictions/yellow.png',
-        null,
-        null,
-        new google.maps.Point(3, 3),
-        new google.maps.Size(6, 6)
-    ),
-    new google.maps.MarkerImage('images/predictions/black.png',
-        null,
-        null,
-        new google.maps.Point(3, 3),
-        new google.maps.Size(6, 6)
-    ),
-    new google.maps.MarkerImage('images/predictions/blue.png',
-        null,
-        null,
-        new google.maps.Point(3, 3),
-        new google.maps.Size(6, 6)
-    ),
-    new google.maps.MarkerImage('images/predictions/green.png',
-        null,
-        null,
-        new google.maps.Point(3, 3),
-        new google.maps.Size(6, 6)
-    ),
-    new google.maps.MarkerImage('images/predictions/orange.png',
-        null,
-        null,
-        new google.maps.Point(3, 3),
-        new google.maps.Size(6, 6)
-    ),
-    new google.maps.MarkerImage('images/predictions/pink.png',
-        null,
-        null,
-        new google.maps.Point(3, 3),
-        new google.maps.Size(6, 6)
-    ),
-    new google.maps.MarkerImage('images/predictions/red.png',
-        null,
-        null,
-        new google.maps.Point(3, 3),
-        new google.maps.Size(6, 6)
-    ),
-    new google.maps.MarkerImage('images/predictions/yellow.png',
-        null,
-        null,
-        new google.maps.Point(3, 3),
-        new google.maps.Size(6, 6)
-    )
+	createIcons('images/predictions/black.png'),
+	createIcons('images/predictions/blue.png'),
+	createIcons('images/predictions/green.png'),
+	createIcons('images/predictions/orange.png'),
+	createIcons('images/predictions/pink.png'),
+	createIcons('images/predictions/red.png'),
+	createIcons('images/predictions/yellow.png')
+];
+
+let planetIcons = [
+	createIcons('images/planets/black.png',10),
+	createIcons('images/planets/blue.png',10),
+	createIcons('images/planets/green.png',10),
+	createIcons('images/planets/orange.png',10),
+	createIcons('images/planets/pink.png',10),
+	createIcons('images/planets/red.png',10),
+	createIcons('images/planets/yellow.png',10)
 ];
 
 // ToDo: Change the icon to come from function for rotation
@@ -549,7 +492,7 @@ function load() {
 					let lat = point.latitude;
 					let lng = point.longitude;
 					let latlng = new google.maps.LatLng(lat, lng);
-					let marker = createMarkerColor(planetPrediction.name + "-" + prediction.name + "-" + pointIndex, latlng, predictionIndex);
+					let marker = createPlanetMarkerColor(planetPrediction.name + "-" + prediction.name + "-" + pointIndex, latlng, predictionIndex);
 
 					if (typeof markersPlanetPrediction[prediction.name] === 'undefined') {
 						markersPlanetPrediction[prediction.name] = [];
@@ -927,24 +870,19 @@ Label.prototype.draw = function () {
 	this.span_.innerHTML = this.get('text').toString();
 };
 
-function createMarkerColor(id, latlng, iconId) {
-    let marker = new google.maps.Marker({
-        position: latlng,
-        map: null,
-        clickable: true,
-        icon: predictionIcons[iconId]
-    });
-    return marker;
+function createPlanetMarkerColor(id, latlng, iconId) {
+	return new createMarkerColor(id, latlng, iconId, planetIcons);
 }
 
-function createMarkerPred(id, latlng) {
-	var marker = new google.maps.Marker({
+function createMarkerColor(id, latlng, iconIdTemp, icons = predictionIcons) {
+	let iconId = iconIdTemp < icons.length ? iconIdTemp : (iconIdTemp % icons.length);
+
+	return new google.maps.Marker({
 		position: latlng,
 		map: null,
 		clickable: true,
-		icon: customIcons[6]
+		icon: icons[iconId]
 	});
-	return marker;
 }
 
 function predictionsDisplay(){
